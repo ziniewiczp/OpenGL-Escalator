@@ -65,6 +65,34 @@ struct przeszkoda{
 
 przeszkoda *obszarPrzeszkody = NULL;
 
+void initializeStairs() {
+
+	for (int i = 0; i < 8; i++)
+	{
+		if (i < 4) 
+		{
+			stairs[i].phase = 1;
+			stairs[i].currentX = 0;
+			stairs[i].currentY = i * 6;
+			stairs[i].currentZ = - i * 6;
+		}
+		else if (i == 4)
+		{
+			stairs[i].phase = 2;
+			stairs[i].currentX = 0;
+			stairs[i].currentY = stairs[i - 1].currentY - 10;
+			stairs[i].currentZ = stairs[i - 1].currentZ;
+		}
+		else if (i < 8) 
+		{
+			stairs[i].phase = 2;
+			stairs[i].currentX = 0;
+			stairs[i].currentY = stairs[i-1].currentY - 6;
+			stairs[i].currentZ = stairs[i-1].currentZ + 6;
+		}
+	}
+}
+
 void resetKamery(){
 
 	kameraX = 10;
@@ -439,6 +467,8 @@ int main(int argc, char **argv)
 	glutSpecialFunc (KlawiszSpecjalnyWcisniety);		// def. obs³ugi klawiatury (klawisze specjalne)
 	glutMouseFunc (PrzyciskMyszyWcisniety); 		// def. obs³ugi zdarzenia przycisku myszy (GLUT)
 	glutMotionFunc (RuchKursoraMyszy);			// def. obs³ugi zdarzenia ruchu myszy (GLUT)
+
+	initializeStairs();
 
 	resetKamery();
 

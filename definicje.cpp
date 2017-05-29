@@ -10,9 +10,15 @@
 
 	/******************* SZABLON **************************/
 
-	// DEFINICJE ZMIENNYCH	
-	float licznik_ruchu = 0;
-	float licznik_schodkow;
+	struct stair
+	{
+		int phase;
+		float currentX, currentY, currentZ;
+	};
+
+	stair stairs[8];
+
+	float movementSpeed = 0.05;
 
 	/******************************************************/
 

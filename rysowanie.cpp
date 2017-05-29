@@ -5,6 +5,9 @@
 
 */
 
+#include <windows.h>
+#include "glut.h"
+
 #ifdef _RYSOWANIE
 
 
@@ -19,21 +22,60 @@
 	// Nazwa_modelu mo¿e byæ podana literemi du¿ymi lub ma³ymi, z rozszerzeniem pliku lub bez.
 
 
-	rysujModel("without_stairs.3ds");		
+
+	//rysujModel("without_stairs.3ds");		
 
 	glTranslatef(17.5, 7.5, -25); // vector
 	glRotatef(-35, 0, 1, 0);
-	glTranslatef(0, licznik_ruchu / 1.5, -licznik_ruchu);
 
-	//for (licznik_schodkow = 0; licznik_schodkow < 5; licznik_schodkow++) {
-		glTranslatef(0, 6, -6);
-		rysujModel("one_stair.3ds");
-	//}
+	for (int i = 0; i < 8; i++)
+	{
+		glPushMatrix();
 
-	licznik_ruchu = licznik_ruchu + 0.1;
+		glTranslatef(stairs[i].currentX, stairs[i].currentY, stairs[i].currentZ);
 
-	if (licznik_ruchu > 50)
-		licznik_ruchu = 0;
+		GLfloat m[16]; glGetFloatv(GL_MODELVIEW_MATRIX, m);
+
+		if (stairs[i].phase == 1 && stairs[i].currentY > 30)
+		{
+			stairs[i].phase = 2;
+			stairs[i].currentY -= 10;
+		}
+		else if (stairs[i].phase == 2 && stairs[i].currentY < -7)
+		{
+			stairs[i].phase = 1;
+			stairs[i].currentY += 10;
+		}
+
+		switch (stairs[i].phase)
+		{
+			case 1:
+				stairs[i].currentY += movementSpeed;
+				stairs[i].currentZ -= movementSpeed;
+
+				rysujModel("one_stair.3ds");
+				break;
+
+			case 2:				
+				stairs[i].currentY -= movementSpeed;
+				stairs[i].currentZ += movementSpeed;
+
+				rysujModel("one_stair.3ds");
+				break;
+
+			default:
+				break;
+		}
+
+		
+
+		std::cout << "Matrix position: (" << m[12] << ", " << m[13] << ", " << m[14] << ")";
+		std::cout << "\n";
+		std::cout << "Stair position: " << i << " " << stairs[i].currentX << ", " << stairs[i].currentY << ", " << stairs[i].currentZ << ")";
+		std::cout << "\n";
+
+		glPopMatrix();
+	}
 
 	/******************************************************/
 
