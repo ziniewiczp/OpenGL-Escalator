@@ -16,9 +16,9 @@
 		float currentX, currentY, currentZ;
 	};
 
-	stair stairs[8];
+	stair stairs[11];
 
-	float movementSpeed = 0.05;
+	float movementSpeed = 0.1;
 
 	/******************************************************/
 

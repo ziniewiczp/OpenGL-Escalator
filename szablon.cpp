@@ -67,23 +67,23 @@ przeszkoda *obszarPrzeszkody = NULL;
 
 void initializeStairs() {
 
-	for (int i = 0; i < 8; i++)
+	for (int i = 0; i < 11; i++)
 	{
-		if (i < 4) 
+		if (i < 6) 
 		{
 			stairs[i].phase = 1;
 			stairs[i].currentX = 0;
 			stairs[i].currentY = i * 6;
 			stairs[i].currentZ = - i * 6;
 		}
-		else if (i == 4)
+		else if (i == 6)
 		{
 			stairs[i].phase = 2;
 			stairs[i].currentX = 0;
 			stairs[i].currentY = stairs[i - 1].currentY - 10;
 			stairs[i].currentZ = stairs[i - 1].currentZ;
 		}
-		else if (i < 8) 
+		else if (i < 11) 
 		{
 			stairs[i].phase = 2;
 			stairs[i].currentX = 0;

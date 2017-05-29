@@ -28,7 +28,7 @@
 	glTranslatef(17.5, 7.5, -25); // vector
 	glRotatef(-35, 0, 1, 0);
 
-	for (int i = 0; i < 8; i++)
+	for (int i = 0; i < 11; i++)
 	{
 		glPushMatrix();
 
