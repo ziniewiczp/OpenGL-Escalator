@@ -72,22 +72,19 @@ void initializeStairs() {
 		if (i < stairsCount/2) 
 		{
 			stairs[i].phase = 1;
-			stairs[i].currentX = 0;
-			stairs[i].currentY = i * 6;
-			stairs[i].currentZ = - i * 6;
+			stairs[i].currentY = i * 3.5;
+			stairs[i].currentZ = -i * 6;
 		}
 		else if (i == stairsCount/2)
 		{
 			stairs[i].phase = 2;
-			stairs[i].currentX = 0;
-			stairs[i].currentY = stairs[i - 1].currentY - 10;
+			stairs[i].currentY = stairs[i - 1].currentY - 20;
 			stairs[i].currentZ = stairs[i - 1].currentZ;
 		}
 		else
 		{
 			stairs[i].phase = 2;
-			stairs[i].currentX = 0;
-			stairs[i].currentY = stairs[i-1].currentY - 6;
+			stairs[i].currentY = stairs[i-1].currentY - 3.5;
 			stairs[i].currentZ = stairs[i-1].currentZ + 6;
 		}
 	}
@@ -195,6 +192,9 @@ void SzablonKlawiszKlawiaturyWcisniety (GLubyte key, int x, int y)
 	   break;
    case 's':
 	   kameraY = kameraY - 5;
+	   break;
+   case 'd':
+	   drawOnlyStairs = !drawOnlyStairs;
 	   break;
    }
 
@@ -474,7 +474,7 @@ int main(int argc, char **argv)
 
     glutMainLoop();					// start obs³ugi komunikatów
     return(0);    
-}
+ }
 
 
 

@@ -21,10 +21,10 @@
 	// Aby narysowaæ model nalezy wywo³aæ funkcjê: rysujModel ("nazwa_modelu");
 	// Nazwa_modelu mo¿e byæ podana literemi du¿ymi lub ma³ymi, z rozszerzeniem pliku lub bez.
 
+	if (drawOnlyStairs == false )
+		rysujModel("without_stairs.3ds");		
 
-	//rysujModel("without_stairs.3ds");		
-
-	glTranslatef(17.5, 7.5, -25); // vector
+	glTranslatef(17.5, 6, -25); // vector
 	glRotatef(-35, 0, 1, 0);
 
 	for (int i = 0; i < stairsCount; i++)
@@ -33,28 +33,28 @@
 
 		glTranslatef(stairs[i].currentX, stairs[i].currentY, stairs[i].currentZ);
 
-		if (stairs[i].phase == 1 && stairs[i].currentY > stairsCount*3)
+		if (stairs[i].phase == 1 && stairs[i].currentY >= 133)
 		{
 			stairs[i].phase = 2;
-			stairs[i].currentY -= 10;
+			stairs[i].currentY -= 20;
 		}
-		else if (stairs[i].phase == 2 && stairs[i].currentY < -7)
+		else if (stairs[i].phase == 2 && stairs[i].currentY <= -20)
 		{
 			stairs[i].phase = 1;
-			stairs[i].currentY += 10;
+			stairs[i].currentY += 21;
 		}
 
 		switch (stairs[i].phase)
 		{
 			case 1:
-				stairs[i].currentY += movementSpeed;
+				stairs[i].currentY += movementSpeed / 1.65;
 				stairs[i].currentZ -= movementSpeed;
 
 				rysujModel("one_stair.3ds");
 				break;
 
 			case 2:				
-				stairs[i].currentY -= movementSpeed;
+				stairs[i].currentY -= movementSpeed / 1.65;
 				stairs[i].currentZ += movementSpeed;
 
 				rysujModel("one_stair.3ds");
@@ -64,12 +64,12 @@
 				break;
 		}
 
-		GLfloat m[16]; glGetFloatv(GL_MODELVIEW_MATRIX, m);
+		/*GLfloat m[16]; glGetFloatv(GL_MODELVIEW_MATRIX, m);
 
 		std::cout << "Matrix position: (" << m[12] << ", " << m[13] << ", " << m[14] << ")";
 		std::cout << "\n";
 		std::cout << "Stair position: " << i << " " << stairs[i].currentX << ", " << stairs[i].currentY << ", " << stairs[i].currentZ << ")";
-		std::cout << "\n";
+		std::cout << "\n";*/
 
 		glPopMatrix();
 	}

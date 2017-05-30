@@ -15,8 +15,10 @@
 		int phase;
 		float currentX, currentY, currentZ;
 	};
+
+	bool drawOnlyStairs = false;
 	
-	int const stairsCount = 21;
+	int const stairsCount = 78;
 
 	float movementSpeed = 0.1;
 
