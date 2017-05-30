@@ -22,21 +22,18 @@
 	// Nazwa_modelu mo¿e byæ podana literemi du¿ymi lub ma³ymi, z rozszerzeniem pliku lub bez.
 
 
-
 	//rysujModel("without_stairs.3ds");		
 
 	glTranslatef(17.5, 7.5, -25); // vector
 	glRotatef(-35, 0, 1, 0);
 
-	for (int i = 0; i < 11; i++)
+	for (int i = 0; i < stairsCount; i++)
 	{
 		glPushMatrix();
 
 		glTranslatef(stairs[i].currentX, stairs[i].currentY, stairs[i].currentZ);
 
-		GLfloat m[16]; glGetFloatv(GL_MODELVIEW_MATRIX, m);
-
-		if (stairs[i].phase == 1 && stairs[i].currentY > 30)
+		if (stairs[i].phase == 1 && stairs[i].currentY > stairsCount*3)
 		{
 			stairs[i].phase = 2;
 			stairs[i].currentY -= 10;
@@ -67,7 +64,7 @@
 				break;
 		}
 
-		
+		GLfloat m[16]; glGetFloatv(GL_MODELVIEW_MATRIX, m);
 
 		std::cout << "Matrix position: (" << m[12] << ", " << m[13] << ", " << m[14] << ")";
 		std::cout << "\n";

@@ -10,15 +10,17 @@
 
 	/******************* SZABLON **************************/
 
-	struct stair
+	struct Stair
 	{
 		int phase;
 		float currentX, currentY, currentZ;
 	};
-
-	stair stairs[11];
+	
+	int const stairsCount = 21;
 
 	float movementSpeed = 0.1;
+
+	Stair stairs[stairsCount];
 
 	/******************************************************/
 
