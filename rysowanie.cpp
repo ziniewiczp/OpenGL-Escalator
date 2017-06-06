@@ -34,7 +34,7 @@
 	glScalef(0.15,1, 0.15);
 	if (rotate == 360) rotate = 0;
 	glRotatef(rotate, 0, 1, 0);
-	rotate += 1;
+	rotate += 0.3;
 	rysujModel("cogwheel.3ds");
 
 	glPopMatrix();
@@ -45,7 +45,7 @@
 	glScalef(0.15, 1, 0.15);
 	if (rotate == 360) rotate = 0;
 	glRotatef(rotate, 0, 1, 0);
-	rotate += 1;
+	rotate += 0.3;
 	rysujModel("cogwheel.3ds");
 
 	glPopMatrix();
