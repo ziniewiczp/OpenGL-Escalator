@@ -21,9 +21,9 @@
 	// Aby narysowaæ model nalezy wywo³aæ funkcjê: rysujModel ("nazwa_modelu");
 	// Nazwa_modelu mo¿e byæ podana literemi du¿ymi lub ma³ymi, z rozszerzeniem pliku lub bez.
 
+
 	if (drawOnlyStairs == false )
 		rysujModel("without_stairs.3ds");		
-
 
 	glTranslatef(17.5, 6, -25); // vector
 	glRotatef(-35, 0, 1, 0);
@@ -31,10 +31,10 @@
 	glPushMatrix();
 	glTranslatef(10,0,-20);
 	glRotatef(90, 0, 0, 1);
-	glScalef(0.15,1, 0.15);
+	glScalef(0.15,0.5, 0.15);
 	if (rotate == 360) rotate = 0;
 	glRotatef(rotate, 0, 1, 0);
-	rotate += 0.3;
+
 	rysujModel("cogwheel.3ds");
 
 	glPopMatrix();
@@ -42,14 +42,13 @@
 	glPushMatrix();
 	glTranslatef(10, 115, -210);
 	glRotatef(90, 0, 0, 1);
-	glScalef(0.15, 1, 0.15);
+	glScalef(0.15, 0.5, 0.15);
 	if (rotate == 360) rotate = 0;
 	glRotatef(rotate, 0, 1, 0);
-	rotate += 0.3;
 	rysujModel("cogwheel.3ds");
 
 	glPopMatrix();
-
+	rotate += 0.5;
 
 	for (int i = 0; i < stairsCount; i++)
 	{
