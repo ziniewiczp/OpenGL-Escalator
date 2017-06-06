@@ -16,8 +16,8 @@
 		float currentX, currentY, currentZ;
 	};
 
-	bool drawOnlyStairs = false;
-	
+	bool drawOnlyStairs = true;
+	int rotate = 0;
 	int const stairsCount = 78;
 
 	float movementSpeed = 0.1;

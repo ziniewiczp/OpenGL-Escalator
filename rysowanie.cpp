@@ -27,6 +27,31 @@
 	glTranslatef(17.5, 6, -25); // vector
 	glRotatef(-35, 0, 1, 0);
 
+	glPushMatrix();
+	glTranslatef(10,0,-20);
+	glRotatef(90, 1, 0, 0);
+	glRotatef(90, 0, 0, 1);
+	glScalef(0.15,0.15, 0.15);
+	if (rotate == 360) rotate = 0;
+	glRotatef(rotate, 0, 1, 0);
+	rotate += 1;
+	rysujModel("cogwheel.3ds");
+
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslatef(10, 115, -210);
+	glRotatef(90, 1, 0, 0);
+	glRotatef(90, 0, 0, 1);
+	glScalef(0.15, 0.15, 0.15);
+	if (rotate == 360) rotate = 0;
+	glRotatef(rotate, 0, 1, 0);
+	rotate += 1;
+	rysujModel("cogwheel.3ds");
+
+	glPopMatrix();
+
+
 	for (int i = 0; i < stairsCount; i++)
 	{
 		glPushMatrix();
