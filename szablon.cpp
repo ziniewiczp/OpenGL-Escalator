@@ -90,6 +90,40 @@ void initializeStairs() {
 	}
 }
 
+void initializeLights() {
+	GLfloat  ambientLight0[4];
+	GLfloat  diffuseLight0[4];
+	GLfloat  specular0[4];
+	GLfloat	 lightPos1[4];
+
+	ambientLight0[0] = 0.0f;
+	ambientLight0[1] = 0.0f;
+	ambientLight0[2] = 0.0f;
+	ambientLight0[3] = 1.0f;
+
+	diffuseLight0[0] = 1.0f;
+	diffuseLight0[1] = 1.0f;
+	diffuseLight0[2] = 0.0f;
+	diffuseLight0[3] = 1.0f;
+
+	specular0[0] = 1.0f;
+	specular0[1] = 1.0f;
+	specular0[2] = 1.0f;
+	specular0[3] = 1.0f;
+
+	lightPos1[0] = 20.0f;
+	lightPos1[1] = -20.0f;
+	lightPos1[2] = 30.0f;
+	lightPos1[3] = 1.0f;
+
+
+	glLightfv(GL_LIGHT1, GL_AMBIENT, ambientLight0);
+	glLightfv(GL_LIGHT1, GL_DIFFUSE, diffuseLight0);
+	glLightfv(GL_LIGHT1, GL_SPECULAR, specular0);
+	glLightfv(GL_LIGHT1, GL_POSITION, lightPos1);
+	glEnable(GL_LIGHT1);
+}
+
 void resetKamery(){
 
 	kameraX = 10;
@@ -471,7 +505,7 @@ int main(int argc, char **argv)
 	initializeStairs();
 
 	resetKamery();
-
+	initializeLights();
     glutMainLoop();					// start obs³ugi komunikatów
     return(0);    
  }
