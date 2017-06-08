@@ -69,23 +69,34 @@ void initializeStairs() {
 
 	for (int i = 0; i < stairsCount; i++)
 	{
-		if (i < stairsCount/2) 
+		if (i < (stairsCount/2) - 2) 
 		{
 			stairs[i].phase = 1;
 			stairs[i].currentY = i * 3.5;
 			stairs[i].currentZ = -i * 6;
 		}
+		else if (i >= (stairsCount / 2) - 2 && i < stairsCount / 2)
+		{
+			stairs[i].phase = 4;
+			stairs[i].currentY = stairs[i - 1].currentY - 3.5;
+			stairs[i].currentZ = stairs[i - 1].currentZ - 6;
+		}
 		else if (i == stairsCount/2)
 		{
 			stairs[i].phase = 2;
-			stairs[i].currentY = stairs[i - 1].currentY - 20;
+			stairs[i].currentY = stairs[i - 1].currentY - 6;
 			stairs[i].currentZ = stairs[i - 1].currentZ;
 		}
-		else
+		else if (i > stairsCount/2 && i < stairsCount - 2)
 		{
 			stairs[i].phase = 2;
 			stairs[i].currentY = stairs[i-1].currentY - 3.5;
 			stairs[i].currentZ = stairs[i-1].currentZ + 6;
+		}
+		else if (i >= stairsCount - 2) {
+			stairs[i].phase = 3;
+			stairs[i].currentY = stairs[i - 1].currentY + 3.5;
+			stairs[i].currentZ = stairs[i - 1].currentZ + 6;
 		}
 	}
 }

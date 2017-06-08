@@ -29,25 +29,25 @@
 	glRotatef(-35, 0, 1, 0);
 
 	glPushMatrix();
-	glTranslatef(10,0,-20);
+	glTranslatef(0,-4,-9.5);
 	glRotatef(90, 0, 0, 1);
-	glScalef(0.15,0.5, 0.15);
-	if (rotate == 360) rotate = 0;
+	glScalef(0.15,0.15, 0.15);
+	if (rotate == 360)
+		rotate = 0;
 	glRotatef(rotate, 0, 1, 0);
-
-	rysujModel("cogwheel.3ds");
-
+	//rysujModel("cogwheel.3ds");
 	glPopMatrix();
 
 	glPushMatrix();
 	glTranslatef(10, 115, -210);
 	glRotatef(90, 0, 0, 1);
 	glScalef(0.15, 0.5, 0.15);
-	if (rotate == 360) rotate = 0;
+	if (rotate == 360)
+		rotate = 0;
 	glRotatef(rotate, 0, 1, 0);
-	rysujModel("cogwheel.3ds");
-
+	//rysujModel("cogwheel.3ds");
 	glPopMatrix();
+
 	rotate += 0.5;
 
 	for (int i = 0; i < stairsCount; i++)
@@ -56,15 +56,25 @@
 
 		glTranslatef(stairs[i].currentX, stairs[i].currentY, stairs[i].currentZ);
 
-		if (stairs[i].phase == 1 && stairs[i].currentY >= 133)
+		if (stairs[i].phase == 1 && stairs[i].currentY >= 126)
+		{
+			stairs[i].phase = 4;
+			//stairs[i].currentY -= 20;
+		}
+		else if (stairs[i].phase == 4 && stairs[i].currentY <= 119) 
 		{
 			stairs[i].phase = 2;
-			stairs[i].currentY -= 20;
+			stairs[i].currentY -= 3.5;
 		}
-		else if (stairs[i].phase == 2 && stairs[i].currentY <= -20)
+		else if (stairs[i].phase == 2 && stairs[i].currentY <= -14)
+		{
+			stairs[i].phase = 3;
+			//stairs[i].currentY += 21;
+		}
+		else if (stairs[i].phase == 3 && stairs[i].currentY >= -7)
 		{
 			stairs[i].phase = 1;
-			stairs[i].currentY += 21;
+			stairs[i].currentY += 3.5;
 		}
 
 		switch (stairs[i].phase)
@@ -79,6 +89,20 @@
 			case 2:				
 				stairs[i].currentY -= movementSpeed / 1.65;
 				stairs[i].currentZ += movementSpeed;
+
+				rysujModel("one_stair.3ds");
+				break;
+
+			case 3:
+				stairs[i].currentY += movementSpeed / 1.65;
+				stairs[i].currentZ += movementSpeed;
+
+				rysujModel("one_stair.3ds");
+				break;
+
+			case 4:
+				stairs[i].currentY -= movementSpeed / 1.65;
+				stairs[i].currentZ -= movementSpeed;
 
 				rysujModel("one_stair.3ds");
 				break;
