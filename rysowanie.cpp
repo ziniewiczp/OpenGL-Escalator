@@ -25,7 +25,7 @@
 	if (drawOnlyStairs == false )
 		rysujModel("without_stairs.3ds");		
 
-	glTranslatef(17.5, 6, -25); // vector
+	glTranslatef(14.5, 6.5, -22); // vector
 	glRotatef(-35, 0, 1, 0);
 	for (int i = 0; i < 2; i++) {
 		glPushMatrix();
@@ -57,25 +57,23 @@
 
 		glTranslatef(stairs[i].currentX, stairs[i].currentY, stairs[i].currentZ);
 
-		if (stairs[i].phase == 1 && stairs[i].currentY >= 126)
+		if (stairs[i].phase == 1 && stairs[i].currentY > 126)
 		{
 			stairs[i].phase = 4;
-			//stairs[i].currentY -= 20;
 		}
-		else if (stairs[i].phase == 4 && stairs[i].currentY <= 119) 
+		else if (stairs[i].phase == 4 && stairs[i].currentY < 119) 
 		{
 			stairs[i].phase = 2;
-			stairs[i].currentY -= 3.5;
+			stairs[i].currentY -= 6;
 		}
-		else if (stairs[i].phase == 2 && stairs[i].currentY <= -14)
+		else if (stairs[i].phase == 2 && stairs[i].currentY < -13)
 		{
 			stairs[i].phase = 3;
-			//stairs[i].currentY += 21;
 		}
-		else if (stairs[i].phase == 3 && stairs[i].currentY >= -7)
+		else if (stairs[i].phase == 3 && stairs[i].currentY > -6)
 		{
 			stairs[i].phase = 1;
-			stairs[i].currentY += 3.5;
+			stairs[i].currentY += 6;
 		}
 
 		switch (stairs[i].phase)
@@ -114,8 +112,8 @@
 
 		/*GLfloat m[16]; glGetFloatv(GL_MODELVIEW_MATRIX, m);
 
-		std::cout << "Matrix position: (" << m[12] << ", " << m[13] << ", " << m[14] << ")";
-		std::cout << "\n";
+		//std::cout << "Matrix position: (" << m[12] << ", " << m[13] << ", " << m[14] << ")";
+		//std::cout << "\n";
 		std::cout << "Stair position: " << i << " " << stairs[i].currentX << ", " << stairs[i].currentY << ", " << stairs[i].currentZ << ")";
 		std::cout << "\n";*/
 
