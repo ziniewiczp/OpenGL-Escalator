@@ -32,7 +32,7 @@
 	GLUquadric *upperCylinder = gluNewQuadric();
 
 	glPushMatrix();
-	glTranslatef(-17.75, -3, -16);
+	glTranslatef(-17.75, -3, -15.75);
 	glRotatef(90, 0, 1, 0);
 	gluCylinder(lowerCylinder, 2.5, 2.5, 36, 10, 10);
 	glPopMatrix();
@@ -67,6 +67,23 @@
 		glPopMatrix();
 	}
 	rotate += 0.4;
+
+	for (int i = 0; i < 2; i++) {
+		glPushMatrix();
+		glTranslatef(17 - (i * 33.5), 54, -115.25);
+		glRotatef(-58.84, 1, 0, 0);
+		glScalef(0.01, 1, 0.0001);
+		glutSolidCube(230.5);
+		glPopMatrix();
+
+		glPushMatrix();
+		glTranslatef(17 - (i * 33.5), 58.9, -113.25);
+		glRotatef(-58.84, 1, 0, 0);
+		glScalef(0.01, 1, 0.0001);
+		glutSolidCube(230.5);
+		glPopMatrix();
+	}
+
 
 	for (int i = 0; i < stairsCount; i++)
 	{
