@@ -27,22 +27,39 @@
 
 	glTranslatef(14.5, 6.5, -22); // vector
 	glRotatef(-35, 0, 1, 0);
+
+	GLUquadric *lowerCylinder = gluNewQuadric();
+	GLUquadric *upperCylinder = gluNewQuadric();
+
+	glPushMatrix();
+	glTranslatef(-17.75, -3, -16);
+	glRotatef(90, 0, 1, 0);
+	gluCylinder(lowerCylinder, 2.5, 2.5, 36, 10, 10);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslatef(-17.75, 116, -212.5);
+	glRotatef(90, 0, 1, 0);
+	gluCylinder(upperCylinder, 2.5, 2.5, 36, 10, 10);
+	glPopMatrix();
+
 	for (int i = 0; i < 2; i++) {
 		glPushMatrix();
-		glTranslatef(-17+(i*35), -4, -12.5);
+		glTranslatef(-14+(i*30.5), -3, -15.5);
 		glRotatef(90, 0, 0, 1);
-		glScalef(0.15, 0.1, 0.30);
+		glScalef(0.15, 0.15, 0.15);
 		if (rotate == 360)
 			rotate = 0;
 		glRotatef(rotate, 0, 1, 0);
 		rysujModel("cogwheel.3ds");
 		glPopMatrix();
 	}
+
 	for (int i = 0; i < 2; i++) {
 		glPushMatrix();
-		glTranslatef(-17+(i*35), 115, -210);
+		glTranslatef(-14+(i*30.25), 116, -212.5);
 		glRotatef(90, 0, 0, 1);
-		glScalef(0.15, 0.1, 0.30);
+		glScalef(0.15, 0.15, 0.15);
 		if (rotate == 360)
 			rotate = 0;
 		glRotatef(rotate, 0, 1, 0);
