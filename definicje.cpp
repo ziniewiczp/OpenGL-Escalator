@@ -16,7 +16,7 @@
 		float currentX, currentY, currentZ;
 	};
 
-	bool drawOnlyStairs = true;
+	bool drawOnlyStairs = false;
 	float rotate = 0;
 	int const stairsCount = 78;
 

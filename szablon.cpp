@@ -137,11 +137,11 @@ void initializeLights() {
 
 void resetKamery(){
 
-	kameraX = 10;
+	kameraX = 0;
 	kameraY = 100;
-	kameraZ = 100;
-	kameraKat = -0.5;
-	kameraPunktY = -30;
+	kameraZ = 250;
+	kameraKat =0;
+	kameraPunktY = 70;
 	kameraPredkoscPunktY = 0;
 	kameraPredkosc = 0;
 	kameraPredkoscObrotu = 0;
@@ -238,8 +238,18 @@ void SzablonKlawiszKlawiaturyWcisniety (GLubyte key, int x, int y)
    case 's':
 	   kameraY = kameraY - 5;
 	   break;
-   case 'd':
+   case 'o':
 	   drawOnlyStairs = !drawOnlyStairs;
+	   break;
+   case 'a':
+	   kameraX = kameraX - 5;
+	   kameraZ = kameraZ - 3;
+	   kameraKat = kameraKat + 0.020;
+	   break;
+   case 'd':
+	   kameraX = kameraX + 5;
+	   kameraZ = kameraZ + 3;
+	   kameraKat = kameraKat - 0.020;
 	   break;
    }
 
@@ -400,7 +410,7 @@ void rysuj(void)
 	glEnable(GL_TEXTURE_2D);
 	rysujModel("land"); // malowanie pod³o¿a
 
-	
+	glDisable(GL_TEXTURE_2D);
 	glPopMatrix();
 
 	//if (!(licznik ++ % 60)) printf("*");

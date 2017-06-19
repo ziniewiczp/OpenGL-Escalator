@@ -32,6 +32,9 @@
 	GLUquadric *upperCylinder = gluNewQuadric();
 
 	glPushMatrix();
+	glColor3f(0, 0, 1);
+
+	glPushMatrix();
 	glTranslatef(-17.75, -3, -15.75);
 	glRotatef(90, 0, 1, 0);
 	gluCylinder(lowerCylinder, 2.5, 2.5, 36, 10, 10);
@@ -42,6 +45,11 @@
 	glRotatef(90, 0, 1, 0);
 	gluCylinder(upperCylinder, 2.5, 2.5, 36, 10, 10);
 	glPopMatrix();
+
+	glPopMatrix();
+
+
+	glPushMatrix();
 
 	for (int i = 0; i < 2; i++) {
 		glPushMatrix();
@@ -60,30 +68,45 @@
 		glTranslatef(-14+(i*30.25), 116, -212.5);
 		glRotatef(90, 0, 0, 1);
 		glScalef(0.15, 0.15, 0.15);
+		glColor3f(0, 0, 1);
 		if (rotate == 360)
 			rotate = 0;
 		glRotatef(rotate, 0, 1, 0);
+		glColor3f(0, 0, 0);
 		rysujModel("cogwheel.3ds");
 		glPopMatrix();
 	}
 	rotate += 0.4;
+
+	glPopMatrix();
+
+	
+	glPushMatrix();
+	glColorMaterial(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE);  // w-¦czenie trybu koloryzacji materia-¡w
+	glEnable(GL_COLOR_MATERIAL); // teraz zmiana koloru materia-u nastàpuje poprzez zwykly glColor*()
 
 	for (int i = 0; i < 2; i++) {
 		glPushMatrix();
 		glTranslatef(17 - (i * 33.5), 54, -115.25);
 		glRotatef(-58.84, 1, 0, 0);
 		glScalef(0.01, 1, 0.0001);
+
+		glColor3f(0, 0, 0);
 		glutSolidCube(230.5);
+
 		glPopMatrix();
 
 		glPushMatrix();
 		glTranslatef(17 - (i * 33.5), 58.9, -113.25);
 		glRotatef(-58.84, 1, 0, 0);
 		glScalef(0.01, 1, 0.0001);
+		glColor3f(0, 0, 0);
 		glutSolidCube(230.5);
+
 		glPopMatrix();
 	}
-
+	glDisable(GL_COLOR_MATERIAL);
+	glPopMatrix();
 
 	for (int i = 0; i < stairsCount; i++)
 	{
