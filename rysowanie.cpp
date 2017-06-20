@@ -32,20 +32,24 @@
 	GLUquadric *upperCylinder = gluNewQuadric();
 
 	glPushMatrix();
-	glColor3f(0, 0, 1);
-
+	glColorMaterial(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE);  // w-¦czenie trybu koloryzacji materia-¡w
+	glEnable(GL_COLOR_MATERIAL); // teraz zmiana koloru materia-u nastàpuje poprzez zwykly glColor*()
+	
 	glPushMatrix();
 	glTranslatef(-17.75, -3, -15.75);
 	glRotatef(90, 0, 1, 0);
+	glColor3f(0, 0, 0);
 	gluCylinder(lowerCylinder, 2.5, 2.5, 36, 10, 10);
 	glPopMatrix();
 
 	glPushMatrix();
 	glTranslatef(-17.75, 116, -212.5);
 	glRotatef(90, 0, 1, 0);
+	glColor3f(0, 0, 0);
 	gluCylinder(upperCylinder, 2.5, 2.5, 36, 10, 10);
 	glPopMatrix();
 
+	glDisable(GL_COLOR_MATERIAL);
 	glPopMatrix();
 
 
@@ -68,11 +72,9 @@
 		glTranslatef(-14+(i*30.25), 116, -212.5);
 		glRotatef(90, 0, 0, 1);
 		glScalef(0.15, 0.15, 0.15);
-		glColor3f(0, 0, 1);
 		if (rotate == 360)
 			rotate = 0;
 		glRotatef(rotate, 0, 1, 0);
-		glColor3f(0, 0, 0);
 		rysujModel("cogwheel.3ds");
 		glPopMatrix();
 	}
